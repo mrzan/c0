@@ -410,7 +410,6 @@ namespace miniplc0 {
 			break;
 		case TokenType::LEFT_BRACKET:
 			//std::cout << "(biao da shi)" << std::endl;
-			next = nextToken();
 			err = analyseExpression();
 			if (err.has_value())
 				return err;
