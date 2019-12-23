@@ -1,0 +1,7 @@
+# ninja log v5
+32	2697	598807973	CMakeFiles/miniplc0_test.dir/tests/test_tokenizer.cpp.obj	b3cee5147705eb1a
+26	2876	598807973	CMakeFiles/miniplc0_test.dir/tests/test_analyser.cpp.obj	c82e749f6b45e95c
+15	4921	598807975	CMakeFiles/miniplc0.dir/main.cpp.obj	ce10cb6e222deff1
+20	12992	598807983	CMakeFiles/miniplc0_test.dir/tests/test_main.cpp.obj	8902090f45885971
+12	1950	598808042	3rd_party/fmt/CMakeFiles/fmt.dir/src/posix.cc.obj	b93d47d7b0e7ff31
+17	5574	598808045	3rd_party/fmt/CMakeFiles/fmt.dir/src/format.cc.obj	3887cae38b28719b

@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\analyser",
+    "\\error",
+    "\\instruction",
+    "\\tests",
+    "\\tokenizer"
+  ],
+  "SelectedNode": "\\analyser\\analyser.cpp",
+  "PreviewInSolutionExplorer": false
+}

@@ -77,39 +77,56 @@ namespace miniplc0 {
 					current_state = DFAState::INITIAL_STATE; // 保留当前状态为初始状态，此处直接break也是可以的
 				else if (!miniplc0::isprint(ch)) // control codes and backspace
 					invalid = true;
+				else if (ch == '0')
+					current_state = DFAState::ZERO_STATE;
 				else if (miniplc0::isdigit(ch)) // 读到的字符是数字
 					current_state = DFAState::UNSIGNED_INTEGER_STATE; // 切换到无符号整数的状态
 				else if (miniplc0::isalpha(ch)) // 读到的字符是英文字母
 					current_state = DFAState::IDENTIFIER_STATE; // 切换到标识符的状态
 				else {
 					switch (ch) {
-					case '=': // 如果读到的字符是`=`，则切换到等于号的状态
-						current_state = DFAState::EQUAL_SIGN_STATE;
+					case '!': 
+						current_state = DFAState::EXCLAMATION_SIGN_STATE;
 						break;
 					case '-':
 						// 请填空：切换到减号的状态
 						current_state = DFAState::MINUS_SIGN_STATE;
 						break;
 					case '+':
-						// 请填空：切换到加号的状态
 						current_state = DFAState::PLUS_SIGN_STATE;
 						break;
 					case '*':
-						// 请填空：切换状态
 						current_state = DFAState::MULTIPLICATION_SIGN_STATE;
 						break;
 					case '/':
-						// 请填空：切换状态
 						current_state = DFAState::DIVISION_SIGN_STATE;
 						break;
-					///// 请填空：
-					///// 对于其他的可接受字符
-					///// 切换到对应的状态
+					case '>': 
+						current_state = DFAState::GRATER_THAN_SIGN_STATE;
+						break;				
+					case '<': 
+						current_state = DFAState::LESS_THAN_SIGN_STATE;
+						break;
+
+					case '=': // 如果读到的字符是`=`，则切换到等于号的状态
+						current_state = DFAState::EQUAL_SIGN_STATE;
+						break;
+					
 					case '(':
 						current_state = DFAState::LEFTBRACKET_STATE;
 						break;
 					case ')':
 						current_state = DFAState::RIGHTBRACKET_STATE;
+						break;
+					case '{':
+						current_state = DFAState::LEFT_BRACE_STATE;
+						break;
+					case '}':
+						current_state = DFAState::RIGHT_BRACE_STATE;
+						break;
+
+					case ',':
+						current_state = DFAState::COMMA_STATE;
 						break;
 					case ';':
 						current_state = DFAState::SEMICOLON_STATE;
@@ -155,8 +172,9 @@ namespace miniplc0 {
 					ss << ch;
 				// 如果读到的是字母，则存储读到的字符，并切换状态到标识符
 				else if (miniplc0::isalpha(ch)) {
-					ss << ch;
-					current_state = DFAState::IDENTIFIER_STATE;
+					/*ss << ch;
+					current_state = DFAState::IDENTIFIER_STATE;*/
+					std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(currentPos(), ErrorCode::ErrInvalidInput));
 				}
 				// 如果读到的字符不是上述情况之一，则回退读到的字符，并解析已经读到的字符串为整数
 				else {
@@ -171,6 +189,37 @@ namespace miniplc0 {
 				}		
 				break;
 			}
+
+			case UNSIGNED_INT16U_STATE: {
+				// 请填空：
+				// 如果当前已经读到了文件尾，则解析已经读到的字符串为整数
+				if (!current_char.has_value()) {
+					long long tmp;
+					ss >> tmp;
+					//     解析成功则返回无符号整数类型的token，否则返回编译错误
+						return std::make_pair(std::make_optional<Token>(TokenType::UNSIGNED_INTEGER, std::to_string(tmp), pos, currentPos()), std::optional<CompilationError>());					
+				}
+				auto ch = current_char.value();
+				// 如果读到的字符是数字，则存储读到的字符
+				if (miniplc0::isxdigit(ch))
+					ss << ch;
+				// 如果读到的是字母，则存储读到的字符，并切换状态到标识符
+				else if (miniplc0::isalpha(ch)) {
+					/*ss << ch;
+					current_state = DFAState::IDENTIFIER_STATE;*/
+					std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(currentPos(), ErrorCode::ErrInvalidInput));
+				}
+				// 如果读到的字符不是上述情况之一，则回退读到的字符，并解析已经读到的字符串为整数
+				else {
+					unreadLast();
+					long long tmp;
+					ss >> tmp;
+					//     解析成功则返回无符号整数类型的token，否则返回编译错误
+					return std::make_pair(std::make_optional<Token>(TokenType::UNSIGNED_INTEGER, std::to_string(tmp), pos, currentPos()), std::optional<CompilationError>());
+				}
+				break;
+			}
+
 			case IDENTIFIER_STATE: {
 				// 请填空：
 				// 如果当前已经读到了文件尾，则解析已经读到的字符串
@@ -221,7 +270,35 @@ namespace miniplc0 {
 				break;
 			}
 
-								   // 如果当前状态是加号
+			case ZERO_STATE: {
+				// 如果当前已经读到了文件尾
+				if (!current_char.has_value()) {				
+					return std::make_pair(std::make_optional<Token>(TokenType::UNSIGNED_INTEGER, "0", pos, currentPos()), std::optional<CompilationError>());
+				}
+				auto ch = current_char.value();
+				// 如果读到的字符是数字
+				if (miniplc0::isdigit(ch))
+					return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(currentPos(), ErrorCode::ErrInvalidInput));
+				// 如果读到的是字母，则存储读到的字符，并切换状态到标识符
+				else if (ch == 'x' || ch == 'X')
+					current_state = DFAState::UNSIGNED_INT16U_STATE;
+				/*else if (miniplc0::isalpha(ch)) {
+					ss << ch;
+					current_state = DFAState::IDENTIFIER_STATE;
+				}*/
+				// 如果读到的字符不是上述情况之一，则回退读到的字符，并解析已经读到的字符串为整数
+				else {
+					unreadLast();
+					return std::make_pair(std::make_optional<Token>(TokenType::UNSIGNED_INTEGER, "0", pos, currentPos()), std::optional<CompilationError>());
+				}
+				break;
+			}
+
+			case EXCLAMATION_SIGN_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::EXCLAMATION_SIGN, '!', pos, currentPos()), std::optional<CompilationError>());
+			}
+								 // 如果当前状态是加号
 			case PLUS_SIGN_STATE: {
 				// 请思考这里为什么要回退，在其他地方会不会需要
 				unreadLast(); // Yes, we unread last char even if it's an EOF.
@@ -246,6 +323,22 @@ namespace miniplc0 {
 				unreadLast(); 
 				return std::make_pair(std::make_optional<Token>(TokenType::DIVISION_SIGN, '/', pos, currentPos()), std::optional<CompilationError>());
 			}
+
+			case GRATER_THAN_SIGN_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::GRATER_THAN_SIGN, '>', pos, currentPos()), std::optional<CompilationError>()); 
+			}
+
+			case LESS_THAN_SIGN_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::LESS_THAN_SIGN, '<', pos, currentPos()), std::optional<CompilationError>());
+			}
+
+			case EQUAL_SIGN_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::EQUAL_SIGN, '=', pos, currentPos()), std::optional<CompilationError>());
+			}
+
 			case LEFTBRACKET_STATE: {
 				unreadLast();
 				return std::make_pair(std::make_optional<Token>(TokenType::LEFT_BRACKET, '(', pos, currentPos()), std::optional<CompilationError>());
@@ -254,14 +347,26 @@ namespace miniplc0 {
 				unreadLast();
 				return std::make_pair(std::make_optional<Token>(TokenType::RIGHT_BRACKET, ')', pos, currentPos()), std::optional<CompilationError>());
 			}
+
+			case LEFT_BRACE_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::LEFT_BRACE, '{', pos, currentPos()), std::optional<CompilationError>());
+			}
+			case RIGHT_BRACE_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::RIGHT_BRACE, '}', pos, currentPos()), std::optional<CompilationError>());
+			}
+
+			case COMMA_STATE: {
+				unreadLast();
+				return std::make_pair(std::make_optional<Token>(TokenType::COMMA, '，', pos, currentPos()), std::optional<CompilationError>());
+			}
+
 			case SEMICOLON_STATE: {
 				unreadLast();
 				return std::make_pair(std::make_optional<Token>(TokenType::SEMICOLON, ';', pos, currentPos()), std::optional<CompilationError>());
 			}
-			case EQUAL_SIGN_STATE: {
-				unreadLast();
-				return std::make_pair(std::make_optional<Token>(TokenType::EQUAL_SIGN, '=', pos, currentPos()), std::optional<CompilationError>());
-			}
+
 								   // 预料之外的状态，如果执行到了这里，说明程序异常
 			default:
 				DieAndPrint("unhandled state.");

@@ -115,23 +115,71 @@ namespace fmt {
 			case miniplc0::UNSIGNED_INTEGER:
 				name = "UnsignedInteger";
 				break;
+			case miniplc0::UNSIGNED_INT16U:
+				name = "UnsignedInt16U";
+				break;
 			case miniplc0::IDENTIFIER:
 				name = "Identifier";
-				break;
-			case miniplc0::BEGIN:
-				name = "Begin";
-				break;
-			case miniplc0::END:
-				name = "End";
-				break;
-			case miniplc0::VAR:
-				name = "Var";
 				break;
 			case miniplc0::CONST:
 				name = "Const";
 				break;
+			case miniplc0::VOID:
+				name = "Void";
+				break;
+			case miniplc0::INT:
+				name = "Int";
+				break;
+			case miniplc0::CHAR:
+				name = "Char";
+				break;
+			case miniplc0::DOUBLE:
+				name = "Double";
+				break;
+			case miniplc0::STRUCT:
+				name = "Struct";
+				break;
+			case miniplc0::IF:
+				name = "If";
+				break;
+			case miniplc0::ELSE:
+				name = "Else";
+				break;
+			case miniplc0::SWTICH:
+				name = "Swtich";
+				break;
+			case miniplc0::CASE:
+				name = "Case";
+				break;
+			case miniplc0::DEFAULT:
+				name = "Default";
+				break;
+			case miniplc0::WHILE:
+				name = "While";
+				break;
+			case miniplc0::FOR:
+				name = "For";
+				break;
+			case miniplc0::DO:
+				name = "Do";
+				break;
+			case miniplc0::RETURN:
+				name = "Return";
+				break; 
+			case miniplc0::BREAK:
+				name = "Break";
+				break;
+			case miniplc0::CONTINUE:
+				name = "Continue";
+				break;
 			case miniplc0::PRINT:
 				name = "Print";
+				break;
+			case miniplc0::SCAN:
+				name = "Scan";
+				break;	
+			case miniplc0::EXCLAMATION_SIGN:
+				name = "ExclamationSign";
 				break;
 			case miniplc0::PLUS_SIGN:
 				name = "PlusSign";
@@ -145,17 +193,32 @@ namespace fmt {
 			case miniplc0::DIVISION_SIGN:
 				name = "DivisionSign";
 				break;
+			case miniplc0::GRATER_THAN_SIGN:
+				name = "GreaterThanSign";
+				break;
+			case miniplc0::LESS_THAN_SIGN:
+				name = "LessThanSign";
+				break;
 			case miniplc0::EQUAL_SIGN:
 				name = "EqualSign";
-				break;
-			case miniplc0::SEMICOLON:
-				name = "Semicolon";
 				break;
 			case miniplc0::LEFT_BRACKET:
 				name = "LeftBracket";
 				break;
 			case miniplc0::RIGHT_BRACKET:
 				name = "RightBracket";
+				break;
+			case miniplc0::LEFT_BRACE:
+				name = "LeftBrace";
+				break;
+			case miniplc0::RIGHT_BRACE:
+				name = "RightBrace";
+				break;
+			case miniplc0::COMMA:
+				name = "Comma";
+				break;
+			case miniplc0::SEMICOLON:
+				name = "Semicolon";
 				break;
 			}
 			return format_to(ctx.out(), name);

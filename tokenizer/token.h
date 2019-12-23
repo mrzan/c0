@@ -9,22 +9,51 @@
 namespace miniplc0 {
 
 	enum TokenType {
-		NULL_TOKEN,
-		UNSIGNED_INTEGER,
+		NULL_TOKEN, 
+		UNSIGNED_INTEGER, 
+		UNSIGNED_INT16U,
 		IDENTIFIER,
-		BEGIN,
-		END,
-		VAR,
+
+		// reserved-word
 		CONST,
+		VOID,
+		INT,
+		CHAR,
+		DOUBLE,
+		STRUCT,
+		IF,
+		ELSE,
+		SWTICH,
+		CASE,
+		DEFAULT,
+		WHILE,
+		FOR,
+		DO,
+		RETURN,
+		BREAK,
+		CONTINUE,
 		PRINT,
-		PLUS_SIGN,
-		MINUS_SIGN,
-		MULTIPLICATION_SIGN,
-		DIVISION_SIGN,
-		EQUAL_SIGN,
-		SEMICOLON,
-		LEFT_BRACKET,
-		RIGHT_BRACKET
+		SCAN,
+
+		// sign
+		EXCLAMATION_SIGN, // !
+
+		PLUS_SIGN, // +
+		MINUS_SIGN, // -
+		MULTIPLICATION_SIGN, // *
+		DIVISION_SIGN, // /
+		GRATER_THAN_SIGN, // >
+		LESS_THAN_SIGN, // <
+
+		EQUAL_SIGN, // =
+		
+		LEFT_BRACKET, // (
+		RIGHT_BRACKET, // )
+		LEFT_BRACE, // {
+		RIGHT_BRACE, // }
+		
+		COMMA, // ,
+		SEMICOLON, // ;
 	};
 
 	class Token final {

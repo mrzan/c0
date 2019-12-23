@@ -1,0 +1,163 @@
+The system is: Windows - 10.0.18362 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.24.28314/bin/HostX64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.24.28314 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.24.28314.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/3.15.19101501-MSVC_2/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.24.28314/bin/HostX64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.24.28314 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.24.28314.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/3.15.19101501-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_8e8a0 && [1/2] Building C object CMakeFiles\cmTC_8e8a0.dir\testCCompiler.c.obj
+[2/2] Linking C executable cmTC_8e8a0.exe
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_47b14 && [1/2] Building C object CMakeFiles\cmTC_47b14.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_47b14.exe
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_77b88 && [1/2] Building CXX object CMakeFiles\cmTC_77b88.dir\testCXXCompiler.cxx.obj
+[2/2] Linking CXX executable cmTC_77b88.exe
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_04b68 && [1/2] Building CXX object CMakeFiles\cmTC_04b68.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_04b68.exe
+
+
+
+Performing C++ SOURCE FILE Test SUPPORTS_VARIADIC_TEMPLATES succeeded with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_c429b && [1/2] Building CXX object CMakeFiles\cmTC_c429b.dir\src.cxx.obj
+[2/2] Linking CXX executable cmTC_c429b.exe
+
+
+Source file was:
+
+  template <class T, class ...Types>
+  struct S { typedef typename S<Types...>::type type; };
+  int main() {}
+Performing C++ SOURCE FILE Test SUPPORTS_USER_DEFINED_LITERALS succeeded with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_8814a && [1/2] Building CXX object CMakeFiles\cmTC_8814a.dir\src.cxx.obj
+[2/2] Linking CXX executable cmTC_8814a.exe
+
+
+Source file was:
+
+  void operator"" _udl(long double);
+  int main() {}
+Performing C++ SOURCE FILE Test FMT_HAS_VARIANT succeeded with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_b3785 && [1/2] Building CXX object CMakeFiles\cmTC_b3785.dir\src.cxx.obj
+cl: 命令行 warning D9002 :忽略未知选项“-std=c++1z”
+class template variant is only available with C++17 or later.
+[2/2] Linking CXX executable cmTC_b3785.exe
+
+
+Source file was:
+
+  #include <variant>
+  int main() {}
+Determining if the open exist passed with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_01b2e && [1/2] Building C object CMakeFiles\cmTC_01b2e.dir\CheckSymbolExists.c.obj
+CheckSymbolExists.c(8): warning C4996: 'open': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _open. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_io.h(516): note: 参见“open”的声明
+[2/2] Linking C executable cmTC_01b2e.exe
+
+
+File Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <io.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef open
+  return ((int*)(&open))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the _strtod_l exist passed with the following output:
+Change Dir: Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d035d && [1/2] Building C object CMakeFiles\cmTC_d035d.dir\CheckSymbolExists.c.obj
+[2/2] Linking C executable cmTC_d035d.exe
+
+
+File Z:/Compilers/c0/out/build/x64-Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _strtod_l
+  return ((int*)(&_strtod_l))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
